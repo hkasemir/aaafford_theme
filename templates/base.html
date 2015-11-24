@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+{% load pages_tags mezzanine_tags i18n staticfiles %}
+
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+<meta name="description" content="{% block meta_description %}{% endblock %}">
+<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
+{% compress css %}
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+
+{% block extra_css %}{% endblock %}
+{% endcompress %}
+
+{% compress js %}
+{% block extra_js %}{% endblock %}
+{% endcompress %}
+
+<!--[if lt IE 9]>
+<script src="{% static "js/html5shiv.js" %}"></script>
+<script src="{% static "js/respond.min.js" %}"></script>
+<![endif]-->
+
+{% block extra_head %}{% endblock %}
+</head>
+
+<body id="{% block body_id %}body{% endblock %}">
+<header>
+      {% page_menu "pages/menus/dropdown.html" %}
+</header>
+
+    {% block main %}{% endblock %}
+    
+<footer>
+    <div class="site-map">
+    {% page_menu "pages/menus/footer.html" %}
+    </div>
+    <p>All Rights Reserved <br>
+    &copy 2015 AA Affordable Storage <br>
+  (303)833-0692</p>
+  <a href="http://www.bbb.org/wyoming-and-northern-colorado/business-reviews/storage-units-household-and-commercial/a-a-affordable-storage-in-frederick-co-46017948#sealclick" class="accredit"><img src="{{ MEDIA_URL }}/uploads/blue-seal-153-100-aaaffordablestorage-46017948.png" /></a>
+    <div class="site-map">
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Disclaimer</a></li>
+      </ul>
+    </div>    
+</footer>
+
+{% include "includes/footer_scripts.html" %}
+
+</body>
+</html>
